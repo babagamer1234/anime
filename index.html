@@ -3,212 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anime Lover</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <title>VideoTube</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Roboto', sans-serif;
-    }
-
-    body {
-      background-color: #1e1e2f;
-      color: #fff;
-      line-height: 1.6;
-    }
-
-    header {
-      background-color: #111122;
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    header h1 {
-      font-size: 1.8rem;
-      color: #ff4d6d;
-    }
-
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin-left: 20px;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: #ff4d6d;
-    }
-
-    .hero {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      height: 80vh;
-      background: url('https://i.ibb.co/7nFzYxV/anime-bg.jpg') no-repeat center/cover;
-      position: relative;
-    }
-
-    .hero::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.6);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      color: #fff;
-    }
-
-    .hero-content h2 {
-      font-size: 3rem;
-      margin-bottom: 20px;
-    }
-
-    .hero-content p {
-      font-size: 1.2rem;
-      margin-bottom: 20px;
-    }
-
-    .hero-content a {
-      padding: 10px 20px;
-      background: #ff4d6d;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
-
-    .hero-content a:hover {
-      background: #ff2a55;
-    }
-
-    section {
-      padding: 60px 40px;
-    }
-
-    .anime-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-    }
-
-    .anime-card {
-      background: #2b2b3f;
-      border-radius: 10px;
-      overflow: hidden;
-      transition: transform 0.3s;
-    }
-
-    .anime-card img {
-      width: 100%;
-      display: block;
-    }
-
-    .anime-card h3 {
-      padding: 10px;
-      font-size: 1.2rem;
-      text-align: center;
-    }
-
-    .anime-card:hover {
-      transform: scale(1.05);
-    }
-
-    footer {
-      background: #111122;
-      text-align: center;
-      padding: 20px;
-      color: #aaa;
-    }
-
+    * { box-sizing: border-box; margin:0; padding:0; font-family:'Roboto', sans-serif; }
+    body { background:#f9f9f9; }
+    header { background:#fff; padding:10px 20px; display:flex; align-items:center; justify-content:space-between; box-shadow:0 2px 5px rgba(0,0,0,0.1); position:sticky; top:0; z-index:100; }
+    header h1 { color:#ff0000; font-size:1.5rem; }
+    .search-bar input { padding:7px 10px; width:300px; border:1px solid #ccc; border-radius:3px; }
+    .sidebar { width:250px; background:#fff; height:calc(100vh - 60px); position:fixed; top:60px; left:0; padding-top:20px; box-shadow:2px 0 5px rgba(0,0,0,0.1); }
+    .sidebar a { display:block; padding:10px 20px; color:#333; text-decoration:none; margin-bottom:5px; border-radius:3px; transition:0.2s; }
+    .sidebar a:hover { background:#f1f1f1; }
+    .content { margin-left:250px; padding:20px; display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:20px; }
+    .video-card { background:#fff; border-radius:5px; overflow:hidden; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
+    .video-card img { width:100%; display:block; }
+    .video-card h3 { padding:10px; font-size:1rem; }
     @media(max-width:768px){
-      .hero-content h2 {
-        font-size: 2rem;
-      }
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      nav a {
-        margin: 10px 10px 0 0;
-      }
+      .sidebar { width:60px; padding-top:10px; }
+      .sidebar a { font-size:12px; padding:8px; }
+      .content { margin-left:60px; grid-template-columns:repeat(auto-fill, minmax(200px,1fr)); }
+      .search-bar input { width:150px; }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>Anime Lover</h1>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <h1>VideoTube</h1>
+    <div class="search-bar">
+      <input type="text" placeholder="Search videos...">
+    </div>
   </header>
 
-  <section class="hero" id="home">
-    <div class="hero-content">
-      <h2>Welcome to Anime Lover</h2>
-      <p>Explore your favorite anime, wallpapers, and news</p>
-      <a href="#gallery">Explore Gallery</a>
+  <div class="sidebar">
+    <a href="#">Home</a>
+    <a href="#">Trending</a>
+    <a href="#">Subscriptions</a>
+    <a href="#">Library</a>
+    <a href="#">History</a>
+  </div>
+
+  <div class="content">
+    <div class="video-card">
+      <img src="https://i.ibb.co/8YJ4LxM/video1.jpg" alt="Video 1">
+      <h3>Learn HTML in 10 Minutes</h3>
     </div>
-  </section>
-
-  <section id="gallery">
-    <h2 style="text-align:center; margin-bottom:40px;">Anime Gallery</h2>
-    <div class="anime-gallery">
-      <div class="anime-card">
-        <img src="https://i.ibb.co/DzL1q3N/anime1.jpg" alt="Anime 1">
-        <h3>Naruto</h3>
-      </div>
-      <div class="anime-card">
-        <img src="https://i.ibb.co/5h3L4QK/anime2.jpg" alt="Anime 2">
-        <h3>Attack on Titan</h3>
-      </div>
-      <div class="anime-card">
-        <img src="https://i.ibb.co/wc6F5Dy/anime3.jpg" alt="Anime 3">
-        <h3>My Hero Academia</h3>
-      </div>
-      <div class="anime-card">
-        <img src="https://i.ibb.co/pRnYt42/anime4.jpg" alt="Anime 4">
-        <h3>Demon Slayer</h3>
-      </div>
+    <div class="video-card">
+      <img src="https://i.ibb.co/0j2hVHw/video2.jpg" alt="Video 2">
+      <h3>Top Anime Openings 2025</h3>
     </div>
-  </section>
-
-  <section id="about">
-    <h2 style="text-align:center; margin-bottom:40px;">About Us</h2>
-    <p style="max-width:800px; margin:0 auto; text-align:center;">
-      Anime Lover is the ultimate hub for anime enthusiasts. Discover trending anime series, wallpapers, and fan content. Join our community and share your love for anime!
-    </p>
-  </section>
-
-  <section id="contact">
-    <h2 style="text-align:center; margin-bottom:40px;">Contact</h2>
-    <p style="text-align:center;">Follow us on social media or send us a message!</p>
-    <div style="text-align:center; margin-top:20px;">
-      <a href="#" style="margin:0 10px; color:#ff4d6d; font-weight:bold;">Instagram</a>
-      <a href="#" style="margin:0 10px; color:#ff4d6d; font-weight:bold;">Twitter</a>
-      <a href="#" style="margin:0 10px; color:#ff4d6d; font-weight:bold;">Facebook</a>
+    <div class="video-card">
+      <img src="https://i.ibb.co/9yw0kRZ/video3.jpg" alt="Video 3">
+      <h3>JavaScript Crash Course</h3>
     </div>
-  </section>
-
-  <footer>
-    &copy; 2025 Anime Lover. All rights reserved.
-  </footer>
+    <div class="video-card">
+      <img src="https://i.ibb.co/N1Yc1Rk/video4.jpg" alt="Video 4">
+      <h3>Funny Anime Moments Compilation</h3>
+    </div>
+  </div>
 
 </body>
 </html>
