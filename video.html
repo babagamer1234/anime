@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VideoTube - Video</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>VideoTube</h1>
+    <div class="search-bar">
+      <input type="text" placeholder="Search videos...">
+    </div>
+  </header>
+
+  <div class="sidebar">
+    <a href="index.html">Home</a>
+    <a href="#">Trending</a>
+    <a href="#">Subscriptions</a>
+    <a href="#">Library</a>
+    <a href="#">History</a>
+  </div>
+
+  <div class="video-player-content">
+    <!-- Embed video dynamically using URL param -->
+    <iframe id="videoFrame" width="100%" height="500" src="" frameborder="0" allowfullscreen></iframe>
+    <h2 id="videoTitle">Video Title</h2>
+
+    <!-- Like/Dislike -->
+    <div class="actions">
+      <button>👍 Like</button>
+      <button>👎 Dislike</button>
+    </div>
+
+    <!-- Comments -->
+    <div class="comments">
+      <h3>Comments</h3>
+      <div class="comment"><strong>User1:</strong> Amazing video!</div>
+      <div class="comment"><strong>User2:</strong> Loved it 😍</div>
+    </div>
+  </div>
+
+  <script>
+    // Get video ID from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const videoId = urlParams.get('v') || 'dQw4w9WgXcQ';
+    document.getElementById('videoFrame').src = `https://www.youtube.com/embed/${videoId}`;
+
+    // Set title dynamically
+    const titles = {
+      'dQw4w9WgXcQ': 'Rick Astley - Never Gonna Give You Up',
+      '3JZ_D3ELwOQ': 'Top 10 Anime Openings 2025',
+      'FTQbiNvZqaY': 'Learn JavaScript in 30 Minutes'
+    };
+    document.getElementById('videoTitle').innerText = titles[videoId] || 'Video';
+  </script>
+</body>
+</html>
